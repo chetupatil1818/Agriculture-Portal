@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $servername="localhost";
@@ -64,138 +63,309 @@ if(isset($_POST ['signupbt'])) {
   header("location: ../index.php");
 }
 ?>
-
-
-
-
 <!DOCTYPE HTML>
 <HTML lang="en">
-
 <head>
-
-
-    <script src="../js/RCustomer.js"></script>
-
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Customer Registration</title>
-
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
     
-
-
-
-
-
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
-        
+    <!-- Bootstrap & jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Translate -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    
+    <script src="../js/RCustomer.js"></script>
+    
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Nunito', sans-serif;
+            color: #2d3a3a;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 180px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .banner-info h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+        
+        #google_translate_element {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 1010;
+        }
+        
+        .registration-container {
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: none;
+            border-top: 4px solid #4caf50;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .form-control {
+            border-radius: 30px;
+            padding: 12px 20px;
+            border: 1px solid #ced4da;
+        }
+        
+        .form-control:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+        
+        .btn-success {
+            background-color: #4caf50;
+            border-color: #4caf50;
+            border-radius: 30px;
+            padding: 12px 20px;
+            font-weight: 600;
+        }
+        
+        .btn-success:hover {
+            background-color: #388e3c;
+            border-color: #388e3c;
+            transform: translateY(-2px);
+        }
+        
+        .h4 {
+            font-family: 'Merriweather', serif;
+            color: #2e7d32;
+            font-weight: 700;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        a {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+        
+        a:hover {
+            color: #1b5e20;
+            text-decoration: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            background: linear-gradient(to right, #2e7d32, #4caf50);
+            font-weight: 600;
+            margin-top: 30px;
+        }
+        
+        .form-text {
+            font-size: 0.85rem;
+        }
+        
+        hr {
+            border-top: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .form-row {
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-banner {
+                height: 160px;
+            }
+            
+            .banner-info h1 {
+                font-size: 28px;
+            }
+            
+            .card {
+                width: 90% !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header with background image -->
+    <div class="header-banner">
+        <div class="banner-info">
+            <h1>Customer Registration</h1>
+        </div>
+        
+        <div id="google_translate_element"></div>
+    </div>
 
-    <!-- Default form register -->
-    <br><br>
-    <div class=container mb-5 mt-5>
+    <div class="registration-container">
         <center>
-            <div class="card-deck" style="width:600px">
-                <form onsubmit= "return newcustomer()" method="POST" class="text-center border border-light p-5" action="user_register.php">
+            <div class="card">
+                <form onsubmit="return newcustomer()" method="POST" class="text-center border border-light p-5" action="user_register.php">
+                    <p class="h4 mb-4">
+                        <i class="fas fa-user-plus mr-2"></i> Customer Sign up
+                    </p>
 
-                    <p class="h4 mb-4">Customer Sign up</p>
-
+                    <!-- Name -->
                     <div class="form-row mb-4">
                         <div class="col">
-                            <!-- Name -->
-                            <input type="text" id="CustName" class="form-control"
-                                placeholder="Name" name="custname">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" id="CustName" class="form-control" placeholder="Name" name="custname">
+                            </div>
                         </div>
-                         
                     </div>
 
-                    
-                    
-
                     <!-- Password -->
-                    <input type="password" id="password" class="form-control" placeholder="Password"
-                        aria-describedby="PasswordHelpBlock" name="password" onkeyup='check();'>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input type="password" id="password" class="form-control" placeholder="Password" name="password" onkeyup='check();'>
+                    </div>
                     <small id="PasswordHelpBlock" class="form-text text-muted mb-4">
-                    Password Length should be minimum 8 characters and maximum 20 characters.
+                        Password Length should be minimum 8 characters and maximum 20 characters.
                     </small>
 
                     <!-- Confirm Password -->
-                    <input type="password" id="confirm_pass" class="form-control mb-4" placeholder="Confirm Password"
-                        aria-describedby="PasswordHelpBlock" name="confirm_pass" onkeyup='check();' >
-                    
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input type="password" id="confirm_pass" class="form-control" placeholder="Confirm Password" name="confirm_pass" onkeyup='check();'>
+                    </div>
 
                     <!-- E-mail -->
-                    <input type="email" id="Email" class="form-control mb-4" name="email" placeholder="E-mail">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" id="Email" class="form-control" name="email" placeholder="E-mail">
+                    </div>
 
+                    <!-- Address -->
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-home"></i></span>
+                        </div>
+                        <input type="text" id="Address" class="form-control" placeholder="Address" name="address">
+                    </div>
 
-                    <input type="text" id="Address" class="form-control" placeholder="Address"
-                        aria-describedby="PhoneHelpBlock" name="address">
-                    <small id="PhoneHelpBlock" class="form-text text-muted mb-4">
-                    </small>
+                    <!-- City and State -->
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-city"></i></span>
+                                </div>
+                                <input type="text" id="City" class="form-control" placeholder="City" name="city">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+                                </div>
+                                <input type="text" id="State" class="form-control" placeholder="State" name="state">
+                            </div>
+                        </div>
+                    </div>
 
-                    <input type="text" id="City" class="form-control" placeholder="City"
-                        aria-describedby="PhoneHelpBlock" name="city">
-                    <small id="PhoneHelpBlock" class="form-text text-muted mb-4">
-                    </small>
+                    <!-- Pincode and Phone -->
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-map-pin"></i></span>
+                                </div>
+                                <input type="number" id="PinCode" class="form-control" placeholder="Pin Code" name="pincode">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" name="phoneno">
+                            </div>
+                        </div>
+                    </div>
 
-                    <input type="number" id="PinCode" class="form-control" placeholder="Pin Code"
-                        aria-describedby="PhoneHelpBlock" name="pincode">
-                    <small id="PhoneHelpBlock" class="form-text text-muted mb-4">
-                    </small>
-
-                    <input type="text" id="State" class="form-control" placeholder="State"
-                        aria-describedby="PhoneHelpBlock" name="state">
-                    <small id="PhoneHelpBlock" class="form-text text-muted mb-4">
-                    </small>
-
-                    <!-- Phone number -->
-                    <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-                        aria-describedby="PhoneHelpBlock" name="phoneno">
-                    <small id="PhoneHelpBlock" class="form-text text-muted mb-4">
-                    </small>
-                   
                     <!-- Sign up button -->
-                    <button class="btn btn-success my-4 btn-block btn " style="background-color:#AA9A6E!important;" type="submit" name="signupbt" value="signupbt">Sign up</button>
+                    <button class="btn btn-success my-4 btn-block" type="submit" name="signupbt" value="signupbt">
+                        <i class="fas fa-user-plus mr-2"></i> Sign up
+                    </button>
 
                     <hr>
 
-        
-                    <div id="google_translate_element"></div>
-                <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'bn,en,gu,hi,kn,mr,ta,te'}, 'google_translate_element');
-}
-</script>
+                    <p>Already have an account?
+                        <a href="../index.php" style="color: #2e7d32;">Sign in here</a>
+                    </p>
                 </form>
             </div>
         </center>
     </div>
-    <!-- Default form register -->
 
+    <div class="footer">
+        <p>Agriculture Portal</p>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'bn,en,gu,hi,kn,mr,ta,te'
+            }, 'google_translate_element');
+        }
+        
+        // Password matching validation function
+        function check() {
+            var password = document.getElementById('password');
+            var confirm_pass = document.getElementById('confirm_pass');
+            
+            if (password.value === confirm_pass.value) {
+                confirm_pass.style.borderColor = '#4caf50';
+            } else {
+                confirm_pass.style.borderColor = '#f44336';
+            }
+        }
+    </script>
 </body>
-
-
-
-
 </HTML>

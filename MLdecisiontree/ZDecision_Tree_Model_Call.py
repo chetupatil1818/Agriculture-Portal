@@ -3,15 +3,8 @@
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from collections import Counter
-from sklearn.externals import joblib 
-import cgitb
-cgitb.enable()
+import joblib
 import sys
-
-
-
 
 header = ['State_Name', 'District_Name', 'Season', 'Crop'] 
 
@@ -31,7 +24,6 @@ class Question:
         return "Is %s %s %s?" %(
             header[self.column],"==",str(self.value))
             
-            
 def class_counts(Data):
     counts= {}
     for row in Data:
@@ -41,21 +33,15 @@ def class_counts(Data):
         counts[label] += 1
     return counts
 
-
 class Leaf:
     def __init__(self,Data):
         self.predictions = class_counts(Data)
-
-
 
 class Decision_Node:
     def __init__(self,question,true_branch,false_branch):
         self.question=question
         self.true_branch = true_branch
         self.false_branch = false_branch
-
-
-
 
 def print_tree(node,spacing=""):
     if isinstance(node,Leaf):
@@ -68,18 +54,12 @@ def print_tree(node,spacing=""):
     print(spacing + "--> False:")
     print_tree(node.false_branch,spacing + " ")
 
-
-
-
 def print_leaf(counts):
     total = sum(counts.values())*1.0
     probs = {}
     for lbl in counts.keys():
         probs[lbl] =str(int(counts[lbl]/total * 100)) + "%"
     return probs
-
-
-
 
 def classify(row,node):
     if isinstance(node,Leaf):
@@ -89,30 +69,15 @@ def classify(row,node):
     else:
         return classify(row,node.false_branch)
 
-
-
-
 dt_model_final= joblib.load('MLdecisiontree/filetest2.pkl') 
-
-
 
 state =sys.argv[1]
 district=sys.argv[2]
 season=sys.argv[3]
 
-
 testing_data = [[state,district,season]]
 
-
-
 for row in testing_data:
-    #print("Actual: %s. Predicted: %s" % (row[-1],print_leaf(classify(row,dt_model_final))))
-    Predict_dict = (print_leaf(classify(row,dt_model_final))).copy()
-
-
-
-for key, value in Predict_dict.items() :
-    print (key)
-    print ("  ||  ")
-
-
+    predictions = classify(row, dt_model_final)
+    for crop, probability in predictions.items():
+        print(f"{crop}: {probability}%")

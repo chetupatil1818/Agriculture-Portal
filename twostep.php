@@ -28,12 +28,14 @@
                                
                                 <form method="POST" class="text-center border border-light p-5" style="height:350px" action="php/login.php">
                                     <p class="h4 mb-4">Two factor verification</p>
-                                    <button class="btn btn-info btn-block my-4 first_box" type="button" name="farmerlogin" onclick="send_otp()">Send OTP</button>
+                                    <button class="btn btn-danger btn-block my-4 first_box" type="button" name="farmerlogin" onclick="send_otp()">Send OTP</button>
+
                                     <div>
                                     <input type="text" id="otp" id="EmailId" class="form-control mb-4 second_box" placeholder="Enter OTP" name="farmer_otp">
                                     <span id="otp_error" class="field_error"></span>
                                     </div>
-                                    <button class="btn btn-info btn-block my-4 second_box" type="button" name="farmerlogin" onclick="submit_otp()">Sign In</button>
+                                    <button class="btn btn-danger btn-block my-4 second_box" type="button" name="farmerlogin" onclick="submit_otp()">Sign In</button>
+
                                     
 
                                 </form>
